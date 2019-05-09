@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1E0622D-D622-4E80-B474-CE89DBAF5630}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>macc</RootNamespace>
+    <AssemblyName>macc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>62B5EC3094F3E8EF2927DE6F96ACC5A6A9C2DDB9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>macc_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>macc.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Dapino-Summer-Blue-Hat.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML">
+      <HintPath>..\packages\ClosedXML.0.80.1\lib\net40-client\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\packages\itextsharp.pdfa.5.5.13\lib\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.CompositeUI">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI.WinForms">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="PdfRpt">
+      <HintPath>..\packages\PdfReport.2.9.2\lib\net45\PdfRpt.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Qios.DevSuite.Components">
+      <HintPath>..\packages\Qios.DevSuite.Components.1.0.0\lib\Qios.DevSuite.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\packages\Infragistics.Themes.MetroLight.Wpf.1.0.0\lib\net40\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\packages\Infragistics.Themes.MetroLight.Wpf.1.0.0\lib\net40\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.CompositeUI">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadChart">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.RadChart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDock">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.RadDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\TelerikCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\packages\Infragistics.Themes.MetroLight.Wpf.1.0.0\lib\net40\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xwt">
+      <HintPath>..\packages\Xwt.0.2.115\lib\net40\Xwt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="account_frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="account_frm.Designer.cs">
+      <DependentUpon>account_frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AcReport2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AcReport2.Designer.cs">
+      <DependentUpon>AcReport2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addresslookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addresslookup.Designer.cs">
+      <DependentUpon>addresslookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs" />
+    <Compile Include="CompanySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanySettings.Designer.cs">
+      <DependentUpon>CompanySettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomJEGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom_Grid_Voucher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dashboard.Designer.cs">
+      <DependentUpon>dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardSettings.Designer.cs">
+      <DependentUpon>DashboardSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="daybook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="daybook.Designer.cs">
+      <DependentUpon>daybook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportReportsEngine.cs" />
+    <Compile Include="Features.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features.Designer.cs">
+      <DependentUpon>Features.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialYearSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialYearSettings.Designer.cs">
+      <DependentUpon>FinancialYearSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRenameAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRenameAccount.Designer.cs">
+      <DependentUpon>frmRenameAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_JEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_JEntry.Designer.cs">
+      <DependentUpon>frm_JEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_paymentvoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_paymentvoucher.Designer.cs">
+      <DependentUpon>frm_paymentvoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PLstatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PLstatement.Designer.cs">
+      <DependentUpon>frm_PLstatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_purchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_purchase.Designer.cs">
+      <DependentUpon>frm_purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_rec_voucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_rec_voucher.Designer.cs">
+      <DependentUpon>frm_rec_voucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_trial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_trial.Designer.cs">
+      <DependentUpon>frm_trial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FYC.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="GroupAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupAccounts.Designer.cs">
+      <DependentUpon>GroupAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="group_frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="group_frm.Designer.cs">
+      <DependentUpon>group_frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History.cs" />
+    <Compile Include="historyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="historyboard.Designer.cs">
+      <DependentUpon>historyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyBehaviour.cs" />
+    <Compile Include="ListViewReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListViewReports.Designer.cs">
+      <DependentUpon>ListViewReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="main.Designer.cs">
+      <DependentUpon>main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportDesigner.Designer.cs">
+      <DependentUpon>ReportDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Themes\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="account_frm.resx">
+      <DependentUpon>account_frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AcReport2.resx">
+      <DependentUpon>AcReport2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addresslookup.resx">
+      <DependentUpon>addresslookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanySettings.resx">
+      <DependentUpon>CompanySettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dashboard.resx">
+      <DependentUpon>dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardSettings.resx">
+      <DependentUpon>DashboardSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="daybook.resx">
+      <DependentUpon>daybook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features.resx">
+      <DependentUpon>Features.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialYearSettings.resx">
+      <DependentUpon>FinancialYearSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRenameAccount.resx">
+      <DependentUpon>frmRenameAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_JEntry.resx">
+      <DependentUpon>frm_JEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_paymentvoucher.resx">
+      <DependentUpon>frm_paymentvoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PLstatement.resx">
+      <DependentUpon>frm_PLstatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_purchase.resx">
+      <DependentUpon>frm_purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_rec_voucher.resx">
+      <DependentUpon>frm_rec_voucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_trial.resx">
+      <DependentUpon>frm_trial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupAccounts.resx">
+      <DependentUpon>GroupAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="group_frm.resx">
+      <DependentUpon>group_frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="historyboard.resx">
+      <DependentUpon>historyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListViewReports.resx">
+      <DependentUpon>ListViewReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main.resx">
+      <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReportDesigner.resx">
+      <DependentUpon>ReportDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="macc_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\th.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cabinet-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\th %284%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\300px-UEB.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imac-white-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\system-preferences-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\things-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-full-icon.png" />
+    <None Include="Resources\things-icon1.png" />
+    <None Include="Resources\th %284%291.jpg" />
+    <None Include="Resources\search_b.png" />
+    <None Include="Resources\recycle-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monitor-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dapino-Summer-Blue-Hat.ico" />
+    <Content Include="Readme.txt" />
+    <Content Include="Resources\1.png" />
+    <Content Include="Resources\2.png" />
+    <Content Include="Resources\202476.png" />
+    <Content Include="Resources\79b672a5a4e47ce457553d171935ca7f--cone-da-pasta-c-rculo-by-vexels.png" />
+    <None Include="Resources\control-panel-icon1.png" />
+    <Content Include="Themes\MetroDark\HowToApplyTheme.txt" />
+    <Content Include="Themes\Metro\HowToApplyTheme.txt" />
+    <None Include="Resources\Wallpapers For Macbook Pro 13 Inch - Wallpaper Cave.jpg" />
+    <None Include="Resources\icons8-minimize-window-50.png" />
+    <None Include="Resources\icons8-cancel-50.png" />
+    <None Include="Resources\icons8-close-window-50 %281%29.png" />
+    <None Include="Resources\icons8-close-window-50.png" />
+    <None Include="Resources\icons8-maximize-window-50.png" />
+    <None Include="Resources\icons8-minimize-window-50 %281%29.png" />
+    <None Include="Resources\external-link.png" />
+    <None Include="Resources\close-window %281%29.png" />
+    <None Include="Resources\minimize-window.png" />
+    <None Include="Resources\maximize-window.png" />
+    <None Include="Resources\group-icon %281%29.png" />
+    <None Include="Resources\group-of-users-icon %281%29.png" />
+    <None Include="Resources\group-of-users-icon.png" />
+    <None Include="Resources\group-add-icon.png" />
+    <None Include="Resources\Group-icon.png" />
+    <None Include="Resources\Groups-icon %281%29.png" />
+    <None Include="Resources\Knob-Forward-icon.png" />
+    <None Include="Resources\Knob-Download-icon.png" />
+    <None Include="Resources\Knob-Add-icon.png" />
+    <None Include="Resources\Knob-Play-Green-icon.png" />
+    <None Include="Resources\Knob-Refresh-icon.png" />
+    <None Include="Resources\Knob-Refresh-icon %281%29.png" />
+    <None Include="Resources\Knob-Fast-Forward-icon.png" />
+    <None Include="Resources\Knob-Fast-Rewind-icon.png" />
+    <None Include="Resources\Knob-Pause-icon.png" />
+    <None Include="Resources\Knob-Play-icon.png" />
+    <None Include="Resources\Knob-Left-icon.png" />
+    <None Include="Resources\Apps-accessories-calculator-icon %281%29.png" />
+    <None Include="Resources\Places-user-home-icon.png" />
+    <None Include="Resources\Places-folder-green-icon.png" />
+    <None Include="Resources\Devices-video-display-icon.png" />
+    <None Include="Resources\Places-folder-txt-icon.png" />
+    <None Include="Resources\avatar-default-icon.png" />
+    <None Include="Resources\Apps-inkscape-icon.png" />
+    <None Include="Resources\Data-Meter-icon.png" />
+    <None Include="Resources\data-management-icon.png" />
+    <None Include="Resources\control-panel-icon.png" />
+    <None Include="Resources\certificate-icon.png" />
+    <None Include="Resources\Categories-applications-system-icon.png" />
+    <None Include="Resources\Categories-applications-office-icon.png" />
+    <None Include="Resources\Categories-applications-development-icon.png" />
+    <None Include="Resources\calendar-icon.png" />
+    <None Include="Resources\calculator-icon.png" />
+    <None Include="Resources\calculation-icon.png" />
+    <None Include="Resources\calculation-icon %281%29.png" />
+    <None Include="Resources\atm-icon.png" />
+    <None Include="Resources\atm-icon %282%29.png" />
+    <None Include="Resources\atm-icon %281%29.png" />
+    <None Include="Resources\Apps-system-file-manager-icon.png" />
+    <None Include="Resources\Apps-preferences-desktop-theme-icon.png" />
+    <None Include="Resources\Apps-inkscape-icon %281%29.png" />
+    <None Include="Resources\Apps-gparted-icon.png" />
+    <None Include="Resources\Apps-gnome-display-properties-icon.png" />
+    <None Include="Resources\Apps-gksu-root-terminal-icon.png" />
+    <None Include="Resources\Apps-accessories-calculator-icon.png" />
+    <None Include="Resources\app-cal-icon.png" />
+    <None Include="Resources\world-stat-icon.png" />
+    <None Include="Resources\usb-icon.png" />
+    <None Include="Resources\thunderbolt-icon.png" />
+    <None Include="Resources\task-notes-icon.png" />
+    <None Include="Resources\system-settings-icon.png" />
+    <None Include="Resources\system-analysis-icon.png" />
+    <None Include="Resources\supplies-icon.png" />
+    <None Include="Resources\stat-icon.png" />
+    <None Include="Resources\shield-icon.png" />
+    <None Include="Resources\removable-icon.png" />
+    <None Include="Resources\Places-user-trash-full-icon.png" />
+    <None Include="Resources\Places-user-home-icon %283%29.png" />
+    <None Include="Resources\Places-user-home-icon %282%29.png" />
+    <None Include="Resources\Places-user-home-icon %281%29.png" />
+    <None Include="Resources\Places-start-here-mint-icon.png" />
+    <None Include="Resources\Places-start-here-arch-icon.png" />
+    <None Include="Resources\Places-folder-yellow-icon.png" />
+    <None Include="Resources\Places-folder-bookmark-icon.png" />
+    <None Include="Resources\person-icon.png" />
+    <None Include="Resources\Numbers-icon.png" />
+    <None Include="Resources\name-card-icon.png" />
+    <None Include="Resources\name-card-icon %281%29.png" />
+    <None Include="Resources\money-bag-icon.png" />
+    <None Include="Resources\Mimes-ooo-calc-icon.png" />
+    <None Include="Resources\market-flow-icon.png" />
+    <None Include="Resources\ideas-icon.png" />
+    <None Include="Resources\folder-data-icon.png" />
+    <None Include="Resources\folder-data-icon %282%29.png" />
+    <None Include="Resources\Folder-Data-icon %281%29.png" />
+    <None Include="Resources\flow-market-icon.png" />
+    <None Include="Resources\flow-market-icon %281%29.png" />
+    <None Include="Resources\floppy-drive-3-12-icon.png" />
+    <None Include="Resources\floppy-drive-3-12-icon %281%29.png" />
+    <None Include="Resources\firewire-icon.png" />
+    <None Include="Resources\file-icon.png" />
+    <None Include="Resources\dollar-stats-icon.png" />
+    <None Include="Resources\dollar-rotation-icon.png" />
+    <None Include="Resources\dollar-icon.png" />
+    <None Include="Resources\dollar-collection-icon.png" />
+    <None Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.11.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Report Viewer 2012 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\MetroDark\MetroDark.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\MetroDark.MSControls.Toolkit.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MetroDark\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Metro\Metro.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Metro\Metro.MSControls.Toolkit.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Metro\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Metro\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Metro\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

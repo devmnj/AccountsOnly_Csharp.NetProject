@@ -1,0 +1,5 @@
+[{"CompanyName":"Office Account","Code":"A1","DBloc":"E:/DeveloperM/Projects/macc/macc/DB/macdb.accdb"},
+{"CompanyName":"Personal Account","Code":"A2","DBloc":"E:/DeveloperM/DB/macdb.accdb"},
+{"CompanyName":"Test Account","Code":"A3","DBloc":"E:/DeveloperM/Projects/macc/macc/DB/macdbtest.accdb"},
+{"CompanyName":"A Company","Code":"A79","DBloc":"E:/DeveloperM/DB/macdb_Acompany.accdb"}
+]
