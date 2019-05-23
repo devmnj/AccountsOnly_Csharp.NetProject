@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_JEntry));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button_FIND = new System.Windows.Forms.Button();
             this.txt_findrcno = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txt_narration = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DTP_rvdate = new System.Windows.Forms.DateTimePicker();
@@ -49,6 +49,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Cr = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new macc.CustomJEGridView();
+            this.SLNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RECFRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRAMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dramount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DRID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -64,12 +72,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -84,39 +87,38 @@
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_print = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.dataGridView1 = new macc.CustomJEGridView();
-            this.SLNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RECFRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRAMOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dramount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CRID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DRID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(227, 312);
+            this.label5.Location = new System.Drawing.Point(269, 316);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(58, 16);
@@ -171,29 +173,19 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel9.Controls.Add(this.checkBox1);
+            this.panel9.Controls.Add(this.button11);
             this.panel9.Location = new System.Drawing.Point(3, 36);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(108, 28);
             this.panel9.TabIndex = 10;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 4);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(79, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Automation";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // txt_narration
             // 
             this.txt_narration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_narration.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_narration.Location = new System.Drawing.Point(289, 309);
+            this.txt_narration.Location = new System.Drawing.Point(327, 309);
             this.txt_narration.Name = "txt_narration";
-            this.txt_narration.Size = new System.Drawing.Size(418, 23);
+            this.txt_narration.Size = new System.Drawing.Size(380, 23);
             this.txt_narration.TabIndex = 6;
             // 
             // label1
@@ -253,6 +245,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.panel13);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
@@ -327,12 +320,80 @@
             this.textBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(230, 253);
+            this.textBox2.Location = new System.Drawing.Point(398, 212);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(112, 23);
             this.textBox2.TabIndex = 7;
             this.textBox2.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.LavenderBlush;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SLNO,
+            this.RECFRM,
+            this.CRAMOUNT,
+            this.ToAccount,
+            this.Dramount,
+            this.CRID,
+            this.DRID});
+            this.dataGridView1.Location = new System.Drawing.Point(-1, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(707, 203);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
+            // 
+            // SLNO
+            // 
+            this.SLNO.Frozen = true;
+            this.SLNO.HeaderText = "SL#";
+            this.SLNO.Name = "SLNO";
+            this.SLNO.Width = 40;
+            // 
+            // RECFRM
+            // 
+            this.RECFRM.Frozen = true;
+            this.RECFRM.HeaderText = "From Account";
+            this.RECFRM.Name = "RECFRM";
+            this.RECFRM.Width = 200;
+            // 
+            // CRAMOUNT
+            // 
+            this.CRAMOUNT.HeaderText = "Cr Amount";
+            this.CRAMOUNT.Name = "CRAMOUNT";
+            this.CRAMOUNT.Width = 130;
+            // 
+            // ToAccount
+            // 
+            this.ToAccount.HeaderText = "To Account";
+            this.ToAccount.Name = "ToAccount";
+            this.ToAccount.Width = 200;
+            // 
+            // Dramount
+            // 
+            this.Dramount.HeaderText = "Dr Amount";
+            this.Dramount.Name = "Dramount";
+            this.Dramount.Width = 130;
+            // 
+            // CRID
+            // 
+            this.CRID.HeaderText = "FID";
+            this.CRID.Name = "CRID";
+            this.CRID.Visible = false;
+            // 
+            // DRID
+            // 
+            this.DRID.HeaderText = "FID2";
+            this.DRID.Name = "DRID";
+            this.DRID.Visible = false;
             // 
             // panel1
             // 
@@ -503,48 +564,15 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.LightGreen;
-            this.panel8.Controls.Add(this.pictureBox3);
-            this.panel8.Controls.Add(this.pictureBox2);
-            this.panel8.Controls.Add(this.pictureBox1);
+            this.panel8.Controls.Add(this.checkBox2);
+            this.panel8.Controls.Add(this.radioButton4);
             this.panel8.Controls.Add(this.radioButton2);
-            this.panel8.Controls.Add(this.label4);
-            this.panel8.Controls.Add(this.textBox1);
             this.panel8.Controls.Add(this.radioButton3);
             this.panel8.Controls.Add(this.radioButton1);
-            this.panel8.Location = new System.Drawing.Point(8, 177);
+            this.panel8.Location = new System.Drawing.Point(2, 176);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(225, 77);
+            this.panel8.Size = new System.Drawing.Size(225, 66);
             this.panel8.TabIndex = 10;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::macc.Properties.Resources.Knob_Refresh_icon__1_;
-            this.pictureBox3.Location = new System.Drawing.Point(182, 42);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(26, 23);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 21;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::macc.Properties.Resources.Knob_Pause_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(150, 42);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(26, 23);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::macc.Properties.Resources.Knob_Add_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(118, 42);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 23);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
             // 
             // radioButton2
             // 
@@ -556,29 +584,6 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Monthly";
             this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 23);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(23, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "On";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(6, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 23);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_findrcno_KeyPress);
             // 
             // radioButton3
             // 
@@ -604,7 +609,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(6, 14);
+            this.monthCalendar1.Location = new System.Drawing.Point(2, 13);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 1;
             // 
@@ -615,7 +620,7 @@
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Location = new System.Drawing.Point(723, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(239, 420);
+            this.groupBox1.Size = new System.Drawing.Size(234, 420);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recuring Settings";
@@ -628,11 +633,11 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ReID,
             this.AFTER});
-            this.dataGridView2.Location = new System.Drawing.Point(6, 260);
+            this.dataGridView2.Location = new System.Drawing.Point(2, 248);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.ShowEditingIcon = false;
-            this.dataGridView2.Size = new System.Drawing.Size(229, 146);
+            this.dataGridView2.Size = new System.Drawing.Size(225, 146);
             this.dataGridView2.TabIndex = 20;
             // 
             // ReID
@@ -733,84 +738,102 @@
             this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // dataGridView1
+            // radioButton4
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.LavenderBlush;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SLNO,
-            this.RECFRM,
-            this.CRAMOUNT,
-            this.ToAccount,
-            this.Dramount,
-            this.CRID,
-            this.DRID});
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(707, 203);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
-            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(3, 22);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(60, 17);
+            this.radioButton4.TabIndex = 0;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Manual";
+            this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // SLNO
+            // checkBox2
             // 
-            this.SLNO.Frozen = true;
-            this.SLNO.HeaderText = "SL#";
-            this.SLNO.Name = "SLNO";
-            this.SLNO.Width = 40;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(3, 45);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(67, 17);
+            this.checkBox2.TabIndex = 22;
+            this.checkBox2.Text = "ON/OFF";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // RECFRM
+            // button11
             // 
-            this.RECFRM.Frozen = true;
-            this.RECFRM.HeaderText = "From Account";
-            this.RECFRM.Name = "RECFRM";
-            this.RECFRM.Width = 200;
+            this.button11.Location = new System.Drawing.Point(5, 3);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(100, 24);
+            this.button11.TabIndex = 0;
+            this.button11.Text = "Recurring Option";
+            this.button11.UseVisualStyleBackColor = true;
             // 
-            // CRAMOUNT
+            // dataGridView3
             // 
-            this.CRAMOUNT.HeaderText = "Cr Amount";
-            this.CRAMOUNT.Name = "CRAMOUNT";
-            this.CRAMOUNT.Width = 130;
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.NavajoWhite;
+            this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView3.Location = new System.Drawing.Point(2, 24);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.ShowEditingIcon = false;
+            this.dataGridView3.Size = new System.Drawing.Size(260, 94);
+            this.dataGridView3.TabIndex = 20;
             // 
-            // ToAccount
+            // dataGridViewTextBoxColumn1
             // 
-            this.ToAccount.HeaderText = "To Account";
-            this.ToAccount.Name = "ToAccount";
-            this.ToAccount.Width = 200;
+            this.dataGridViewTextBoxColumn1.HeaderText = "R.ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // Dramount
+            // dataGridViewTextBoxColumn2
             // 
-            this.Dramount.HeaderText = "Dr Amount";
-            this.Dramount.Name = "Dramount";
-            this.Dramount.Width = 130;
+            this.dataGridViewTextBoxColumn2.HeaderText = "EVERY/ON";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // CRID
+            // label4
             // 
-            this.CRID.HeaderText = "FID";
-            this.CRID.Name = "CRID";
-            this.CRID.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 3);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(129, 18);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Available Recurings";
             // 
-            // DRID
+            // panel13
             // 
-            this.DRID.HeaderText = "FID2";
-            this.DRID.Name = "DRID";
-            this.DRID.Visible = false;
+            this.panel13.BackColor = System.Drawing.Color.Gold;
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel13.Controls.Add(this.dataGridView3);
+            this.panel13.Controls.Add(this.label4);
+            this.panel13.Location = new System.Drawing.Point(3, 212);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(267, 123);
+            this.panel13.TabIndex = 21;
             // 
             // frm_JEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(969, 434);
+            this.ClientSize = new System.Drawing.Size(960, 434);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frm_JEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JEntry";
@@ -819,10 +842,10 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -830,14 +853,13 @@
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -888,13 +910,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReID;
         private System.Windows.Forms.DataGridViewTextBoxColumn AFTER;
@@ -907,5 +923,13 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }

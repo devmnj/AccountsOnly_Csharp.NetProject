@@ -210,8 +210,8 @@ namespace macc
                                 Globals.JEPartDataSet.Tables[0].Rows.Add(dr);
                                 Globals.JEPartAdapter.InsertCommand = Globals.cmdbuilder.GetInsertCommand();
                                 Globals.JEPartAdapter.Update(Globals.JEPartDataSet.Tables[0]);
-                                Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Cracid, Dracid, 102, eno: rcno, cr: Crcash);
-                                Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Dracid, Cracid, 102, eno: rcno, dr: cash);
+                                Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Cracid, Dracid, 102, eno: rcno, cr: Crcash);
+                                Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Dracid, Cracid, 102, eno: rcno, dr: cash);
                             }
 
                         }
@@ -364,7 +364,7 @@ namespace macc
 
                             OleDbCommand cmd = new OleDbCommand("delete from je_part where entryno=" + txt_rvno.Text, Globals.con);
                             cmd.ExecuteScalar();
-                            Globals.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 102);
+                            Globals.TrFunctions.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 102);
                             //re-insert records
                             Globals.F5JEPart();
                             Globals.cmdbuilder = new System.Data.OleDb.OleDbCommandBuilder(Globals.JEPartAdapter);
@@ -411,8 +411,8 @@ namespace macc
                                     Globals.JEPartDataSet.Tables[0].Rows.Add(dr);
                                     Globals.JEPartAdapter.InsertCommand = Globals.cmdbuilder.GetInsertCommand();
                                     Globals.JEPartAdapter.Update(Globals.JEPartDataSet.Tables[0]);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Cracid, Dracid, 102, eno: rcno, cr: Crcash);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Dracid, Cracid, 102, eno: rcno, dr: Drcash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Cracid, Dracid, 102, eno: rcno, cr: Crcash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), Dracid, Cracid, 102, eno: rcno, dr: Drcash);
 
                                 }
                             }
@@ -447,7 +447,7 @@ namespace macc
                 {
                     OleDbCommand cmd = new OleDbCommand("delete from  je_info where  entryno=" + txt_rvno.Text, Globals.con);
                     cmd.ExecuteScalar();
-                    Globals.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 102);
+                    Globals.TrFunctions.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 102);
                     MessageBox.Show("Journal Entry [" + txt_rvno.Text + "]" + " Deleted");
                     Globals.AppEvents.NewEvent(new Events(DateTime.Now, "Journal Entry", txt_rvno.Text.ToString(), "Deleted"));
                     Globals.history.Subscribe(Globals.AppEvents);

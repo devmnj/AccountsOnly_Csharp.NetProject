@@ -102,7 +102,7 @@ namespace macc
 
         private void dataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.EndEdit();
+            //dataGridView1.EndEdit();
 
             if (e.ColumnIndex != 0)
             {
@@ -172,6 +172,11 @@ namespace macc
             if (e.KeyChar == 13)
             {
                 dataGridView1.EndEdit();
+                if (dataGridView1.CurrentCell.Value==null )
+                {
+                    disc_perc.Focus();
+                }
+
 
 
             }
@@ -345,8 +350,8 @@ namespace macc
                                     Globals.RVPartDataSet.Tables[0].Rows.Add(dr);
                                     Globals.RVPartAdapter.InsertCommand = Globals.cmdbuilder.GetInsertCommand();
                                     Globals.RVPartAdapter.Update(Globals.RVPartDataSet.Tables[0]);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, eno: rcno, cr: cash);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, eno: rcno, dr: cash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, eno: rcno, cr: cash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, eno: rcno, dr: cash);
                                 }
 
                             }
@@ -449,7 +454,7 @@ namespace macc
                         int stat = ad.Update(ds.Tables[0]);
                         if (stat > 0)
                         {
-                            Globals.DeleteTransactions(rcno, 100);
+                            Globals.TrFunctions.DeleteTransactions(rcno, 100);
                             OleDbCommand cmd = new OleDbCommand("delete from rv_part where entryno=" + txt_rvno.Text, Globals.con);
                             cmd.ExecuteScalar();
                             //re-insert records
@@ -480,8 +485,8 @@ namespace macc
                                     Globals.RVPartDataSet.Tables[0].Rows.Add(dr);
                                     Globals.RVPartAdapter.InsertCommand = Globals.cmdbuilder.GetInsertCommand();
                                     Globals.RVPartAdapter.Update(Globals.RVPartDataSet.Tables[0]);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, eno: rcno, cr: cash);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, eno: rcno, dr: cash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, eno: rcno, cr: cash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, eno: rcno, dr: cash);
 
                                 }
                             }
@@ -516,7 +521,7 @@ namespace macc
                 {
                     OleDbCommand cmd = new OleDbCommand("delete from  rv_info where  entryno=" + txt_rvno.Text, Globals.con);
                     cmd.ExecuteScalar();
-                    Globals.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 100);
+                    Globals.TrFunctions.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 100);
                     MessageBox.Show("Receipt [" + txt_rvno.Text + "]" + " Deleted");
                     Globals.AppEvents.NewEvent(new Events(DateTime.Now, "Recept Voucher", txt_rvno.Text.ToString(), "Deleted"));
                     Globals.history.Subscribe(Globals.AppEvents);
@@ -566,6 +571,165 @@ namespace macc
         private void DTP_rvdate_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Move Last
+            try
+            {
+                Globals.F5RVIN ();
+                if (Globals.RVInfoView.Count > 0)
+                {
+                    txt_findrcno.Text = Globals.RVInfoView[Globals.RVInfoView.Count - 1]["entryno"].ToString();
+                    btn_clear_Click(sender, e);
+                    Find(int.Parse(txt_findrcno.Text.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error:" + ex.Message.ToString());
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Move First
+            try
+            {
+                Globals.F5RVIN();
+                if (Globals.RVInfoView.Count > 0)
+                {
+                    txt_findrcno.Text = Globals.RVInfoView[0]["entryno"].ToString();
+                    btn_clear_Click(sender, e);
+                    Find(int.Parse(txt_findrcno.Text.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error:" + ex.Message.ToString());
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Move Next
+            try
+            {
+
+                Globals.F5RVIN();
+                if (Globals.RVInfoView.Count > 0)
+                {
+                    int inv = 0; int.TryParse(txt_findrcno.Text.ToString(), out inv);
+                    Recheck:
+                    if (inv > 0)
+                    {
+
+                        inv++;
+                        if (Globals.iseno(inv, Globals.DB_TABLES[1011]) == 1)
+                        {
+                            Globals.F5RVIN();
+                            Globals.RVInfoView.Sort = "entryno";
+                            int eno = Globals.RVInfoView.Find(inv);
+
+                            if (eno != -1)
+                            {
+                                txt_findrcno.Text = Globals.RVInfoView[eno]["entryno"].ToString();
+                                btn_clear_Click(sender, e);
+                                Find(int.Parse(txt_findrcno.Text.ToString()));
+                                txt_findrcno.Text = txt_rvno.Text;
+                            }
+                            else
+                            {
+                                inv--;
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No more Vouchers found");
+                        }
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("No more Vouchers found");
+
+                    }
+
+                }
+            }
+            catch (Exception e1)
+            {
+                Console.WriteLine("Error:" + e1.Message.ToString());
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Previous
+            try
+            {
+
+                Globals.F5RVIN();
+                if (Globals.RVInfoView.Count > 0)
+                {
+                    int inv = 0; int.TryParse(txt_findrcno.Text.ToString(), out inv);
+                    Recheck:
+                    if (inv > 0)
+                    {
+
+                        inv--;
+                        if (Globals.iseno(inv, Globals.DB_TABLES[1011]) == 1)
+                        {
+                            Globals.F5RVIN();
+                            Globals.RVInfoView.Sort = "entryno";
+                            int eno = Globals.RVInfoView.Find(inv);
+
+                            if (eno != -1)
+                            {
+                                txt_findrcno.Text = Globals.RVInfoView[eno]["entryno"].ToString();
+                                btn_clear_Click(sender, e);
+                                Find(int.Parse(txt_findrcno.Text.ToString()));
+                                txt_findrcno.Text = txt_rvno.Text;
+                            }
+                            else
+                            {
+                                inv--;
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No more Vouchers found");
+                        }
+
+                    }
+                    else
+                    {
+
+                        button3_Click(sender, e);
+
+                    }
+
+                }
+            }
+            catch (Exception e1)
+            {
+                Console.WriteLine("Error:" + e1.Message.ToString());
+            }
+        }
+
+        private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+           // MessageBox.Show("validation completed");
+        }
+
+        private void dataGridView1_Leave(object sender, EventArgs e)
+        {
+          
+           // MessageBox.Show("has Left");
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)

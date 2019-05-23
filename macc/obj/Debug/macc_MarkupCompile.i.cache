@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-D:\macc\macc\obj\Debug\
+D:\GitHubDrive\AccountsOnly_Csharp.NetProject\macc\obj\Debug\
 macc
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 10-1489542773
 8-2083191636
-66-1511494676
-41596046950
+66-262303384
+41-615330939
 Themes\MetroDark\MetroDark.MSControls.Core.Implicit.xaml;Themes\MetroDark\MetroDark.MSControls.Toolkit.Implicit.xaml;Themes\MetroDark\Styles.Shared.xaml;Themes\MetroDark\Styles.WPF.xaml;Themes\MetroDark\Theme.Colors.xaml;Themes\Metro\Metro.MSControls.Core.Implicit.xaml;Themes\Metro\Metro.MSControls.Toolkit.Implicit.xaml;Themes\Metro\Styles.Shared.xaml;Themes\Metro\Styles.WPF.xaml;Themes\Metro\Theme.Colors.xaml;
 
 False

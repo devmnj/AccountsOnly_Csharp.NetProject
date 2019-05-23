@@ -115,14 +115,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="macc.exe" size="6262272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="macc.exe" size="6935040">
       <assemblyIdentity name="macc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dOuZm7/YcrRxinVsKfTeE4AaL832mfnRUlp4BhcMtpQ=</dsig:DigestValue>
+        <dsig:DigestValue>XmtXvM/cEcBmrR+aYiN1p5yeCRv59qD735kWan2egyo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -339,13 +339,13 @@
       <dsig:DigestValue>BpTGlk/p64Vpugw3SvLDr8rUgku7oitB7a7z/u8dCZw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="macc.exe.config" size="1295">
+  <file name="macc.exe.config" size="1296">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KsxeXsLr/rTlBPv4V9Z+8mIxdGonnaqQ/furpuvWP4k=</dsig:DigestValue>
+      <dsig:DigestValue>OB4ag20NfTX6X4uNO5oAdyr+xjUACu3ZeMs+Q7jGW0o=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Readme.txt" size="131">

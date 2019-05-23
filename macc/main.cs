@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,12 +17,13 @@ namespace macc
 
     {
         DataTable qview;
+        
         private int childFormNumber = 0;
 
         public mainMDI()
         {
             InitializeComponent();
-
+            
 
         }
 
@@ -120,17 +122,19 @@ namespace macc
             this.ContextMenuStrip = contextMenuStrip1;
             Globals.OpenDBConnection();
             Globals.company = new macc.MyCompany();
-
+            Globals.TrFunctions = new AccountTransactions("InitializeAccountView");     
             toolStripStatusLabel1.DataBindings.Add("Text", Globals.company, "CName");
             toolStripStatusLabel5.DataBindings.Add("Text", Globals.company, "COwnership");
             toolStripStatusLabel3.DataBindings.Add("Text", Globals.company, "FYC");
-            backgroundWorker1.RunWorkerAsync();
+            //DGV_quickview.DataSource=  qview;
+             
             //historyboard his = new historyboard();
             //his.MdiParent = this;
-
+            DGV_quickview.DataBindings.Add("datasource", Globals.TrFunctions, "ChangedStatus");
             //his.Location = new Point(this.Width-his.Width - 70, 0);
-
+              //backgroundWorker1.RunWorkerAsync();
             //his.Show();
+          //  backgroundWorker1.RunWorkerAsync();
 
         }
 
@@ -190,7 +194,7 @@ namespace macc
             //Group
             group_frm gform = new group_frm();
             gform.MdiParent = this;
-            
+
             gform.Show();
         }
 
@@ -199,7 +203,7 @@ namespace macc
             //Account Registration
             account_frm acform = new account_frm();
             acform.MdiParent = this;
-           
+
             acform.Show();
         }
 
@@ -216,7 +220,7 @@ namespace macc
             //Receipt
             frm_rec_voucher rec = new frm_rec_voucher();
             rec.MdiParent = this;
-           
+
             rec.Show();
             rec.BringToFront();
         }
@@ -226,7 +230,7 @@ namespace macc
             //Payment
             frm_paymentvoucher pay = new frm_paymentvoucher();
             pay.MdiParent = this;
-           
+
             pay.Show();
         }
 
@@ -244,7 +248,7 @@ namespace macc
         {
             frm_JEntry je = new frm_JEntry();
             je.MdiParent = this;
-          
+
             je.Show();
         }
 
@@ -262,7 +266,7 @@ namespace macc
         {
             frm_trial trial = new frm_trial();
             trial.MdiParent = this;
-            
+
             trial.Show();
         }
 
@@ -278,7 +282,7 @@ namespace macc
         {
             frm_PLstatement pl = new frm_PLstatement();
             pl.MdiParent = this;
-           
+
             pl.Show();
         }
 
@@ -448,7 +452,7 @@ namespace macc
 
         private void reportDesignerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dashBoardSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -460,9 +464,7 @@ namespace macc
 
         private void dashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //dashboard dashboard = new dashboard();
-            //dashboard.MdiParent = this;
-            //dashboard.Show();
+             
             if (DGV_quickview.Visible == true)
             {
                 DGV_quickview.Visible = false;
@@ -470,17 +472,17 @@ namespace macc
             else
             {
                 qview = Globals.BackWorker_Accounts();
-               // DGV_quickview.SendToBack();
-                
+                 
+
                 DGV_quickview.Visible = true;
-                DGV_quickview.Location = new Point(1130 , 30);
+                DGV_quickview.Location = new Point(1130, 30);
             }
 
         }
 
         private void accountViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
 
         }
 
@@ -495,8 +497,8 @@ namespace macc
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            qview = Globals.BackWorker_Accounts();
-
+           // Globals.acquickview = new AccountsQuickView();
+           //Thread.Sleep(100);
 
         }
 
@@ -507,12 +509,18 @@ namespace macc
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            DGV_quickview.DataSource = qview;
+            //DGV_quickview.DataSource = null;
+           
+            //if (backgroundWorker1.IsBusy == false)
+            //{
+            //    backgroundWorker1.RunWorkerAsync();
+            //}
+
         }
 
         private void DGV_quickview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void toolStripButton11_Click(object sender, EventArgs e)
@@ -557,15 +565,15 @@ namespace macc
             try
             {
                 string ac = DGV_quickview[e.ColumnIndex, e.RowIndex].Value.ToString();
-                if (ac != null && e.ColumnIndex==0 )
+                if (ac != null && e.ColumnIndex == 0)
                 {
 
                     acid = Globals.GetAccountID(ac);
                     AcReport2 rep = new AcReport2(acid);
-                   
+
                     rep.MdiParent = this;
- 
-                    
+
+
                     rep.Show();
 
 
@@ -577,13 +585,13 @@ namespace macc
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
             DashboardSettings dashboard = new DashboardSettings();
-            dashboard.MdiParent = this;dashboard.Show();
+            dashboard.MdiParent = this; dashboard.Show();
         }
 
         private void toolStripButton16_Click_1(object sender, EventArgs e)
         {
             frmRenameAccount acren = new frmRenameAccount();
-            acren.MdiParent = this;acren.Show();
+            acren.MdiParent = this; acren.Show();
         }
 
         private void toolStripButton14_Click(object sender, EventArgs e)
@@ -603,6 +611,12 @@ namespace macc
             ListViewReports reports = new ListViewReports();
             reports.MdiParent = this;
             reports.Show();
+        }
+
+        private void toolStripButton20_Click(object sender, EventArgs e)
+        {
+            frm_purchase purchase = new frm_purchase();
+            purchase.MdiParent = this;purchase.Show();
         }
     }
 }

@@ -9,11 +9,14 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
 using System.Windows.Forms.Design;
+using System.ComponentModel;
+
 namespace macc
 {
     static class Globals
     {
         public static MyCompany company;
+         public static AccountTransactions TrFunctions = new AccountTransactions();
         public static DataTable BWKTable;
         public static mainMDI main_mdi = new mainMDI();
         public static EventManager AppEvents = new EventManager();
@@ -63,11 +66,13 @@ namespace macc
         public static DataSet dashboardSettings_DataSet;
         public static DataView dashboardSettings_View;
 
-        public static void Positionform( Form f)
+ 
+
+        public static void Positionform(Form f)
         {
             try
             {
-                f.Location = new System.Drawing.Point(12,10);
+                f.Location = new System.Drawing.Point(12, 10);
                 f.StartPosition = FormStartPosition.Manual;
             }
             catch (Exception e)
@@ -188,7 +193,7 @@ namespace macc
                     }
                     else
                     {
-                        bal = Globals.GetOB(DateTime.Now.Date ,int.Parse(r["acid"].ToString()),1);
+                        bal = Globals.GetOB(DateTime.Now.Date, int.Parse(r["acid"].ToString()), 1);
                         // string stam = String.Format("{{0:0.00}", bal).ToString();                     
                     }
                     string[] arr = { str, bal.ToString() };
@@ -613,55 +618,55 @@ namespace macc
             trnsAdapter.Fill(trnsDataSet, "transaactions");
             trnsView = new DataView(trnsDataSet.Tables[0]);
         }
-        public static void AddTransactions(string tdate, int acid, int linkid, int eid = 100, int eno = 0, double dr = 0, double cr = 0)
-        {
-            try
-            {
-                OleDbCommand cmd = new OleDbCommand("insert into transactions (TR_DATE,ACID,LINKD_TR_ID,DR_AMOUNT,CR_AMOUNT,EID,ENO) values('" +
-                    tdate + "'," + acid + "," + linkid + "," + dr + "," + cr + "," + eid + "," + eno + ")", con);
-                cmd.ExecuteScalar();
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write(ex.Message.ToString());
-            }
-        }
-        public static void DeleteTransactions(int Eno, int eid)
-        {
-            try
-            {
-                OleDbCommand cmd = new OleDbCommand("delete from transactions WHERE eno=" + Eno + " and eid=" + eid, con);
-                cmd.ExecuteScalar();
-            }
-            catch (OleDbException ex)
-            {
+        //public static void AddTransactions(string tdate, int acid, int linkid, int eid = 100, int eno = 0, double dr = 0, double cr = 0)
+        //{
+        //    try
+        //    {
+        //        OleDbCommand cmd = new OleDbCommand("insert into transactions (TR_DATE,ACID,LINKD_TR_ID,DR_AMOUNT,CR_AMOUNT,EID,ENO) values('" +
+        //            tdate + "'," + acid + "," + linkid + "," + dr + "," + cr + "," + eid + "," + eno + ")", con);
+        //        cmd.ExecuteScalar();
+        //    }
+        //    catch (OleDbException ex)
+        //    {
+        //        Console.Write(ex.Message.ToString());
+        //    }
+        //}
+        //public static void DeleteTransactions(int Eno, int eid)
+        //{
+        //    try
+        //    {
+        //        OleDbCommand cmd = new OleDbCommand("delete from transactions WHERE eno=" + Eno + " and eid=" + eid, con);
+        //        cmd.ExecuteScalar();
+        //    }
+        //    catch (OleDbException ex)
+        //    {
 
-            }
-        }
-        public static void DeleteTransactions(int acid)
-        {
-            try
-            {
-                OleDbCommand cmd = new OleDbCommand("delete from transactions WHERE acid=" + acid, con);
-                cmd.ExecuteScalar();
-            }
-            catch (OleDbException ex)
-            {
+        //    }
+        //}
+        //public static void DeleteTransactions(int acid)
+        //{
+        //    try
+        //    {
+        //        OleDbCommand cmd = new OleDbCommand("delete from transactions WHERE acid=" + acid, con);
+        //        cmd.ExecuteScalar();
+        //    }
+        //    catch (OleDbException ex)
+        //    {
 
-            }
-        }
-        public static void DeleteTransactions(int acid, string eno = "0")
-        {
-            try
-            {
-                OleDbCommand cmd = new OleDbCommand("delete from transactions WHERE acid=" + acid + " and eno=0", con);
-                cmd.ExecuteScalar();
-            }
-            catch (OleDbException ex)
-            {
+        //    }
+        //}
+        //public static void DeleteTransactions(int acid, string eno = "0")
+        //{
+        //    try
+        //    {
+        //        OleDbCommand cmd = new OleDbCommand("delete from transactions WHERE acid=" + acid + " and eno=0", con);
+        //        cmd.ExecuteScalar();
+        //    }
+        //    catch (OleDbException ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         public static void F5RVIN()
         {
@@ -690,7 +695,7 @@ namespace macc
             AccountAdapter = new OleDbDataAdapter("select * from accounts order by group", con);
             AccountDataSet = new DataSet();
             AccountAdapter.Fill(AccountDataSet, "accounts");
-            AccountView = new DataView(AccountDataSet.Tables[0]);
+            AccountView = new DataView(AccountDataSet.Tables["accounts"]);
 
         }
         public static void F5Group()
@@ -820,8 +825,8 @@ namespace macc
                     F5Group();
                     GroupView.Sort = "gid";
                     gid = int.Parse(AccountView[0]["group"].ToString());
-                // Console.WriteLine(AccountView[0]["group"].ToString());
-                Re:
+                    // Console.WriteLine(AccountView[0]["group"].ToString());
+                    Re:
                     GroupView.RowFilter = "gid=" + gid;
 
                     if (GroupView.Count == 1)
@@ -956,9 +961,9 @@ namespace macc
         public static List<double> getGroupListBalance(string frmdtstr, string todtstr, int ledid)
         {
             List<double> bal = new List<double>();
-            OleDbDataAdapter ad = new OleDbDataAdapter("select dr_amount,cr_amount from transactions where  tr_date>=#" + string.Format("{0:MM/dd/yy}",todtstr) + "#  AND  tr_date<=#" + string.Format("{0:MM/dd/yy}",frmdtstr) + "# AND ACID=" + ledid + "",con);
+            OleDbDataAdapter ad = new OleDbDataAdapter("select dr_amount,cr_amount from transactions where  tr_date>=#" + string.Format("{0:MM/dd/yy}", todtstr) + "#  AND  tr_date<=#" + string.Format("{0:MM/dd/yy}", frmdtstr) + "# AND ACID=" + ledid + "", con);
             DataSet dx = new DataSet();
-            ad.Fill(dx,"transactions");
+            ad.Fill(dx, "transactions");
 
             trnsView = new DataView(dx.Tables[0]);
             double[] tot = { 0, 0 };
@@ -1019,13 +1024,87 @@ namespace macc
 
 
 
+    //  public class AccountsQuickView: System.ComponentModel.INotifyPropertyChanged
+    //{
+    //    DataTable BWKTable;
+    //    public AccountsQuickView()
+    //    {
 
+    //    }
+
+       
+
+    //    public DataTable UpdateTable()
+    //    {
+    //        double bal = 0; string str = null;
+    //        try
+    //        {
+    //            BWKTable = new DataTable();
+    //            BWKTable.Columns.Clear();
+    //            BWKTable.Rows.Clear();
+    //            BWKTable.Columns.Add("A/c", typeof(string));
+    //            BWKTable.Columns.Add("Balance", typeof(double));
+    //            Globals.F5DashBoardSettings();
+    //            foreach (DataRowView r in Globals.dashboardSettings_View)
+    //            {
+    //                str = Globals.GetAccountName(int.Parse(r["acid"].ToString()));
+    //                if (str == null)
+    //                {
+    //                    str = Globals.GetGroupName(int.Parse(r["acid"].ToString()));
+    //                    bal = Globals.GetGroupOB(int.Parse(r["acid"].ToString()));
+    //                }
+    //                else
+    //                {
+    //                    bal = Globals.GetOB(DateTime.Now.Date, int.Parse(r["acid"].ToString()), 1);
+    //                    // string stam = String.Format("{{0:0.00}", bal).ToString();                     
+    //                }
+    //                string[] arr = { str, bal.ToString() };
+
+    //                BWKTable.Rows.Add(arr);
+
+    //            }
+
+    //        }
+    //        catch (OleDbException exc)
+    //        {
+    //            MessageBox.Show(exc.Message.ToString());
+    //        }
+    //        return BWKTable;
+    //    }
+    //    public DataTable QuickAccountTable
+    //    {
+    //        set
+    //        {
+    //            this.BWKTable = value;
+    //            this.BWKTable = UpdateTable();
+    //            OnPropertyChanged("QuickAccountTable");
+    //        }
+    //        get
+    //        {
+    //            return BWKTable;
+    //        }
+
+    //    }
+    //    public event PropertyChangedEventHandler PropertyChanged;
+
+    //    private void OnPropertyChanged(string info)
+    //    {
+    //        PropertyChangedEventHandler handler = PropertyChanged;
+    //        if (handler != null)
+    //        {
+    //            handler(this, new PropertyChangedEventArgs(info));
+    //        }
+    //    }
+
+    //}
+ 
 
     class Accounts
     {
         string acname;
         string code;
         string dbloc;
+
         public Accounts(string a, string c, string loc)
         {
             acname = a; code = c; dbloc = loc;
@@ -1040,6 +1119,7 @@ namespace macc
         //{
         //    get { return "Company"; }
         //}
+
         public string CompanyName
         {
             get

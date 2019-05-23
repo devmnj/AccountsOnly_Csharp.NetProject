@@ -11,6 +11,7 @@ namespace macc
     {
         public double totalCash = 0;
         double takecash = 0;
+        bool LastCol = false;
         public double GetTotalCash;
         //{
         //    get
@@ -31,7 +32,7 @@ namespace macc
             // Handle the ENTER key as if it were a RIGHT ARROW key. 
             if (key == Keys.Enter)
             {
-                base.EndEdit();
+                 base.EndEdit();
                 return this.ProcessRightKey(keyData);
             }
             return base.ProcessDialogKey(keyData);
@@ -47,15 +48,27 @@ namespace macc
             {
                 if (base.CurrentCell.ColumnIndex == 2)
                 {
+
                     int cri = base.CurrentRow.Index;
                     try
                     {
-                        base.CurrentCell = base.Rows[cri + 1].Cells[0];
+                        if (base.Rows[cri ].Cells[0].Value != null)
+                        {
+                            LastCol = false;
+                            base.CurrentCell = base.Rows[cri + 1].Cells[0];
+                        }
+                        else
+                        {
+                            InvokeLostFocus(this, e);
+                        }
+                      //  BeginEdit(true);
                     }
                     catch (ArgumentOutOfRangeException)
                     {
                         base.Rows.Add();
                         base.CurrentCell = base.Rows[cri + 1].Cells[0];
+                       // base.EndEdit();
+                        LastCol = true;
                     }
 
                 }
@@ -78,9 +91,18 @@ namespace macc
                 {
                     st = Rows[e.RowIndex].Cells[1].Value.ToString();
                     strArr = st.Split(splitchar);
-                    Globals.F5Account ();
-                    Globals.AccountView.Sort = "acid";
-                    
+                    Globals.F5Account();
+
+                    try
+                    {
+                        Globals.AccountView.Sort = "acid";
+                    }
+                    catch (System.ArgumentException arr)
+                    {
+                        Globals.F5Account();
+
+                    }
+
                     int stat = Globals.AccountView.Find(strArr[1]);
                     if (stat >= 0)
                     {
@@ -97,12 +119,39 @@ namespace macc
                 //    double.TryParse(base.Rows[e.RowIndex].Cells[2].Value.ToString(), out takecash);
                 //    totalCash = totalCash + takecash;
                 //}
+
             }
+            //  if (LastCol == true) 
+            { base.EndEdit(); }
             base.OnCellLeave(e);
         }
         protected override void OnRowLeave(DataGridViewCellEventArgs e)
         {
+            base.EndEdit();
             base.OnRowLeave(e);
+        }
+        protected override void OnCellEnter(DataGridViewCellEventArgs e)
+        {
+            //if (LastCol == false)
+            base.BeginEdit(true);
+            base.OnCellEnter(e);
+        }
+        protected override void OnLostFocus(EventArgs e)
+        {
+
+            // base.EndEdit();
+            base.OnLostFocus(e);
+        }
+        protected override void OnLeave(EventArgs e)
+        {
+            base.EndEdit();
+            base.OnLeave(e);
+
+        }
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+
+            base.OnKeyPress(e);
         }
     }
 }

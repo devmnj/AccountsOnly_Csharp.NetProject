@@ -338,7 +338,7 @@ namespace macc
                         if (stat > 0)
                         {
 
-                            Globals.DeleteTransactions(rcno, Globals.GetEntryID("PAYMENT VOUCHER"));
+                            Globals.TrFunctions.DeleteTransactions(rcno, Globals.GetEntryID("PAYMENT VOUCHER"));
                             OleDbCommand cmd = new OleDbCommand("delete from pv_part where entryno=" + txt_rvno.Text, Globals.con);
                             cmd.ExecuteScalar();
                             //re-insert records
@@ -371,8 +371,8 @@ namespace macc
                                         Globals.PVPartDataSet.Tables[0].Rows.Add(dr);
                                         Globals.PVPartAdapter.InsertCommand = Globals.cmdbuilder.GetInsertCommand();
                                         Globals.PVPartAdapter.Update(Globals.PVPartDataSet.Tables[0]);
-                                        Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, 101, eno: rcno, dr: cash);
-                                        Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, 101, eno: rcno, cr: cash);
+                                        Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, 101, eno: rcno, dr: cash);
+                                        Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, 101, eno: rcno, cr: cash);
 
                                     }
                                 }
@@ -409,7 +409,7 @@ namespace macc
                         OleDbCommand cmd = new OleDbCommand("delete from  pv_info where  entryno=" + txt_rvno.Text, Globals.con);
                         cmd.ExecuteScalar();
 
-                        Globals.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 101);
+                        Globals.TrFunctions.DeleteTransactions(int.Parse(txt_rvno.Text.ToString()), 101);
                         MessageBox.Show("Paymeny Voucher [" + txt_rvno.Text + "]" + " Deleted");
                         Globals.AppEvents.NewEvent(new Events(DateTime.Now, "Payment Voucher", txt_rvno.Text.ToString(), "Deleted"));
                         Globals.history.Subscribe(Globals.AppEvents);
@@ -503,8 +503,8 @@ namespace macc
                                     Globals.PVPartDataSet.Tables[0].Rows.Add(dr);
                                     Globals.PVPartAdapter.InsertCommand = Globals.cmdbuilder.GetInsertCommand();
                                     Globals.PVPartAdapter.Update(Globals.PVPartDataSet.Tables[0]);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, 101, eno: rcno, dr: cash);
-                                    Globals.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, 101, eno: rcno, cr: cash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), cracid, dracid, 101, eno: rcno, dr: cash);
+                                    Globals.TrFunctions.AddTransactions(DTP_rvdate.Value.ToShortDateString(), dracid, cracid, 101, eno: rcno, cr: cash);
                                 }
 
                             }
@@ -732,7 +732,10 @@ namespace macc
 
         private void txt_acname_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridView1.Focus();
+            }
         }
     }
 }

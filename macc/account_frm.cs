@@ -150,8 +150,8 @@ namespace macc
                     int stat = Globals.AccountAdapter.Update(Globals.AccountDataSet.Tables[0]);
                     if (stat > 0)
                     {
-                        if (obdr > 0) Globals.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, dr: obdr);
-                        if (obcr > 0) Globals.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, 0, obcr);
+                        if (obdr > 0) Globals.TrFunctions.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, dr: obdr);
+                        if (obcr > 0) Globals.TrFunctions.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, 0, obcr);
                         if (checkBox1.Checked == true)
                         {
                             Globals.F5Account_Particular();
@@ -346,10 +346,10 @@ namespace macc
                         Globals.cmdbuilder.QuoteSuffix = "]";
                         Globals.AccountAdapter.UpdateCommand = Globals.cmdbuilder.GetUpdateCommand();
                         int stat = Globals.AccountAdapter.Update(Globals.AccountDataSet.Tables[0]);
-                        Globals.DeleteTransactions(int.Parse(dr["acid"].ToString()), "0");
+                        Globals.TrFunctions.DeleteTransactions(int.Parse(dr["acid"].ToString()), "0");
 
-                        if (obdr > 0) Globals.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, dr: obdr);
-                        if (obcr > 0) Globals.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, 0, obcr);
+                        if (obdr > 0) Globals.TrFunctions.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, dr: obdr);
+                        if (obcr > 0) Globals.TrFunctions.AddTransactions(dateTimePicker1.Value.ToShortDateString(), Globals.GetAccountID(acname), Globals.GetAccountID(acname), 0, 0, 0, obcr);
 
                         if (checkBox1.Checked == true)
                         {
@@ -438,7 +438,7 @@ namespace macc
                                     cmd.ExecuteNonQuery();
                                     if (c > 0)
                                     {
-                                        Globals.DeleteTransactions(int.Parse(strArr[1].ToString()));
+                                        Globals.TrFunctions.DeleteTransactions(int.Parse(strArr[1].ToString()));
                                         int id;
                                         string[] actxt = txt_name.Text.Split('|');
                                         if (actxt.Length > 1)
